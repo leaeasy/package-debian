@@ -1,0 +1,13 @@
+Source: oracle-java6
+Section: non-free/java
+Priority: optional
+Maintainer: Deepin Packages Builder <packages@linuxdeepin.com>
+Build-Depends: debhelper (>= 8.0.0), wget, gzip
+Standards-Version: 3.9.4
+Homepage: http://www.oracle.com/technetwork/java/javase/downloads/index.html
+
+Package: oracle-java6
+Architecture: any
+Depends: ${misc:Depends}, java-common (>=0.24), locales
+Description: <insert up to 60 chars description>
+ <insert long description, indented with spaces>

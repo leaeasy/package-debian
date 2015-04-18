@@ -1,0 +1,16 @@
+#!/bin/sh
+
+set -e
+
+case "$1" in
+	purge|remove|abort-install)
+		rm -Rf "/usr/lib/jvm/java-6-oracle" \
+			"/usr/lib/jvm/.java-6-oracle.jinfo"
+   ;;
+esac
+
+#DEBHELPER#
+
+exit 0
+
+# vim: ts=2 sw=2

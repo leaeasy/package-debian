@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Oracle Java 6 VisualVM
+Comment=Oracle Java 6 Monitoring & Management (VisualVM)
+Exec=/usr/lib/jvm/java-6-oracle/bin/jvisualvm
+Terminal=false
+Type=Application
+Icon=oracle_java6
+Categories=Application;System;

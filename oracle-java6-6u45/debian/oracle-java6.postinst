@@ -1,0 +1,56 @@
+#!/bin/sh
+
+set -e 
+
+JAVA_INSTALL_DIR=/usr/lib/jvm/java-6-oracle
+PRIORITY=1
+
+case $(uname -m) in
+    'i686'|'i586')
+        arch=i386
+        ;;
+    'x86_64')
+        arch=amd64
+        ;;
+    esac
+
+if [ -e /usr/lib/jvm/.java-6-oracle.jinfo ]; then
+    rm -f /usr/lib/jvm/.java-6-oracle.jinfo
+fi
+
+echo "name=java-6-oracle
+alias=java-6-oracle
+priority=$PRIORITY
+section=non-free
+" > /usr/lib/jvm/.java-6-oracle.jinfo
+
+# Link JRE files
+for f in $JAVA_INSTALL_DIR/jre/bin/*; do
+    name=`basename $f`
+    if [ ! -f "/usr/bin/$name" -o -L "/usr/bin/$name" ];then
+        if [ -f "$JAVA_INSTALL_DIR/man/man1/$name.1.gz" ];then
+            update-alternatives --install /usr/bin/$name $name $JAVA_INSTALL_DIR/jre/bin/$name $PRIORITY --slave /usr/share/man/man1/$name.1.gz $name.1.gz $JAVA_INSTALL_DIR/man/man1/$name.1.gz
+            echo "jre $name $JAVA_INSTALL_DIR/jre/bin/$name" >> /usr/lib/jvm/.java-6-oracle.jinfo
+        else
+            update-alternatives --install /usr/bin/$name $name $JAVA_INSTALL_DIR/jre/bin/$name $PRIORITY 
+            echo "jre $name $JAVA_INSTALL_DIR/jre/bin/$name" >> /usr/lib/jvm/.java-6-oracle.jinfo
+        fi
+    fi
+done
+
+# Link JRE not in jre/bin
+[ -f $JAVA_INSTALL_DIR/jre/lib/jexec ] && \
+    update-alternatives --install /usr/bin/jexec jexec $JAVA_INSTALL_DIR/jre/lib/jexec $PRIORITY \
+    --slave /usr/share/binfmts/jar jexec-binfmt $JAVA_INSTALL_DIR/jre/lib/jar.binfmt && \
+    echo "jre jexec $JAVA_INSTALL_DIR/jre/lib/jexec" >> /usr/lib/jvm/.java-6-oracle.jinfo
+
+which update-binfmts > /dev/null && [ -r /usr/share/binfmts/jar ] && \
+    update-binfmts --package oracle-java6 --import jar || true
+echo "Oracle JDK 6 installed"
+
+[ -f $JAVA_INSTALL_DIR/jre/lib/$arch/libnpjp2.so ] && \
+    update-alternatives --install /usr/lib/mozilla/plugins/libjavaplugin.so mozilla-javaplugin.so $JAVA_INSTALL_DIR/jre/lib/$arch/libnpjp2.so $PRIORITY && \
+    echo "plugin mozilla-javaplugin.so $JAVA_INSTALL_DIR/jre/lib/$arch/libnpjp2.so" >> /usr/lib/jvm/.java-6-oracle.jinfo
+echo "Oracle JRE 6 browser plugin installed"
+
+exit 0

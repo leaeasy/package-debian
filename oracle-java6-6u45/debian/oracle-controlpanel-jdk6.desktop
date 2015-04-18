@@ -1,0 +1,10 @@
+
+[Desktop Entry]
+Encoding=UTF-8
+Name=Oracle Java 6 Plugin Control Panel
+Comment=Oracle Java 6 Plugin Control Panel
+Exec=/usr/lib/jvm/java-6-oracle/bin/ControlPanel
+Terminal=false
+Type=Application
+Icon=oracle_java6
+Categories=Settings;

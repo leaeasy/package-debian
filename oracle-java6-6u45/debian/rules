@@ -1,0 +1,64 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+# Sample debian/rules that uses debhelper.
+# This file was originally written by Joey Hess and Craig Small.
+# As a special exception, when this file is copied by dh-make into a
+# dh-make output file, you may use that output file without restriction.
+# This special exception was added by Craig Small in version 0.37 of dh-make.
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+DEBVERS := $(shell dpkg-parsechangelog | sed -n -e 's/^Version: //p' | sed -e 's/\-.*$ //p' | sort -u)
+_mver := $(shell echo $(DEBVERS) | sed 's/u.*//g')
+_lver := $(shell echo $(DEBVERS) | sed 's/.*u//g')
+PKGNAME = "oracle-java6"
+REPO = "http://repo.linuxdeepin.com/repo"
+ifeq ($(DEB_HOST_ARCH),amd64)
+	BUNDLE="jdk-$(DEBVERS)-linux-x64.bin"
+else 
+	ifeq ($(DEB_HOST_ARCH),i386)
+	BUNDLE="jdk-$(DEBVERS)-linux-i586.bin"
+	endif
+endif
+
+%:
+	dh $@ 
+
+override_dh_auto_build:
+	wget $(REPO)/$(BUNDLE) && chmod +x $(BUNDLE)
+
+override_dh_auto_install:
+	rm -rf unbundle-jdk
+	mkdir unbundle-jdk
+	cd unbundle-jdk; sh ../$(BUNDLE) -noregister
+	mkdir -p debian/$(PKGNAME)/usr/lib/jvm
+	mkdir -p debian/$(PKGNAME)/usr/lib/mozilla-plugins
+#Need fix every vesion
+	mv unbundle-jdk/jdk1.$(_mver).0_$(_lver) debian/$(PKGNAME)/usr/lib/jvm/java-6-oracle
+	mkdir -p debian/$(PKGNAME)/usr/share/applications
+	mkdir -p debian/$(PKGNAME)/usr/share/pixmaps
+	mkdir -p debian/$(PKGNAME)/usr/share/mime-info
+	mkdir -p debian/$(PKGNAME)/usr/share/application-registry
+	cp debian/*.desktop debian/$(PKGNAME)/usr/share/applications/
+	cp debian/oracle_java6.xpm debian/$(PKGNAME)/usr/share/pixmaps/
+	cp debian/oracle_java6.png debian/$(PKGNAME)/usr/share/pixmaps/
+	cp debian/*.applications debian/$(PKGNAME)/usr/share/application-registry
+	cp debian/*.mime debian/$(PKGNAME)/usr/share/mime-info
+	cp debian/*.keys debian/$(PKGNAME)/usr/share/mime-info
+# Install jar.binfmt
+	install -m 755 debian/jar.binfmt debian/$(PKGNAME)/usr/lib/jvm/java-6-oracle/jre/lib/jar.binfmt
+# Set java6 default
+	mkdir -p debian/$(PKGNAME)/etc/profile.d/
+	cp debian/jdk.sh debian/$(PKGNAME)/etc/profile.d/
+	cp debian/jdk.csh debian/$(PKGNAME)/etc/profile.d/
+# Gzip man handbook
+	ls debian/$(PKGNAME)/usr/lib/jvm/java-6-oracle/man/man1/*.1 >/dev/null 2>&1 && gzip -9 debian/$(PKGNAME)/usr/lib/jvm/java-6-oracle/man/man1/*.1
+
+override_dh_strip:
+override_dh_shlibdeps:
+
+override_dh_clean:
+	dh_clean
+	rm -rf unbundle-jdk
+	rm -f jdk-*-linux-*.bin
