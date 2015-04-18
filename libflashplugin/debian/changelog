@@ -1,0 +1,118 @@
+libflashplugin (11.2.202.457) trusty; urgency=medium
+
+  * update to 11.2.202.457.
+
+ -- pkg-builder <pkg-builder@packages.linuxdeepin.com>  Sat, 18 Apr 2015 10:33:59 +0800
+
+libflashplugin (11.2.202.451) trusty; urgency=medium
+
+  * update to 11.2.202.451.
+
+ -- pkg-builder <pkg-builder@packages.linuxdeepin.com>  Fri, 06 Feb 2015 22:30:46 +0800
+
+libflashplugin (11.2.202.440~trusty) trusty; urgency=medium
+
+  * update to 11.2.202.440. 
+
+ -- pkg-builder <pkg-builder@packages.linuxdeepin.com>  Sun, 01 Feb 2015 23:23:24 +0800
+
+libflashplugin (11.2.202.429~trusty) trusty; urgency=medium
+
+  * upstream update to 202.429. 
+
+ -- pkg-builder <pkg-builder@packages.linuxdeepin.com>  Wed, 14 Jan 2015 11:20:05 +0800
+
+libflashplugin (11.2.202.425~trusty) trusty; urgency=medium
+
+  * upstream update to 202.425
+
+ -- Packages Builder <packages@linuxdeepin.com>  Fri, 12 Dec 2014 09:59:54 +0800
+
+libflashplugin (11.2.202.350~trusty) trusty; urgency=low
+
+  * upstream update to 202.350
+
+ -- Deepin Packages Builder <packages@linuxdeepin.com>  Fri, 11 Apr 2014 14:42:36 +0800
+
+libflashplugin (11.2.202.336~raring) raring; urgency=low
+
+  * backport to raring 
+
+ -- Deepin Packages Builder <packages@linuxdeepin.com>  Tue, 11 Feb 2014 15:32:27 +0800
+
+libflashplugin (11.2.202.336) saucy; urgency=high
+
+  * Update.
+
+ -- Deepin Packages Builder <packages@linuxdeepin.com>  Tue, 11 Feb 2014 15:24:51 +0800
+
+libflashplugin (11.2.202.310-2) saucy; urgency=low
+
+  * port to saucy 
+
+ -- Deepin Packages Builder <packages@linuxdeepin.com>  Fri, 06 Dec 2013 23:50:42 +0800
+
+libflashplugin (11.2.202.310) raring; urgency=low
+
+  * Upstream update 
+
+ -- Deepin Packages Builder <packages@linuxdeepin.com>  Tue, 15 Oct 2013 13:05:54 +0800
+
+libflashplugin (11.2.202.297deepin1) raring; urgency=low
+
+  * upstream update.
+
+ -- Yueqian Zhang <zhangyueqian@linuxdeepin.com>  Wed, 17 Jul 2013 10:42:47 +0800
+
+libflashplugin (11.2.202.270deepin1+nmu1) raring; urgency=low
+
+  * Non-maintainer upload.
+  * Dummy update
+
+ -- Deepin Testing Packages <testing@linuxdeepin.com>  Tue, 16 Apr 2013 15:37:20 +0800
+
+libflashplugin (11.2.202.270deepin1) quantal; urgency=low
+
+  * upstream update.
+
+ -- Yueqian Zhang <zhangyueqian@linuxdeepin.com>  Tue, 26 Feb 2013 09:53:08 +0800
+
+libflashplugin (11.2.202.238deepin3) precise; urgency=low
+
+  * reupload.
+
+ -- Yueqian Zhang <zhangyueqian@linuxdeepin.com>  Thu, 06 Sep 2012 18:27:51 +0800
+
+libflashplugin (11.2.202.238deepin2) precise; urgency=low
+
+  * fix kde4 kcm error. 
+
+ -- Li Longyu (Ai Kotoba) <leaeasy@gmail.com>  Mon, 03 Sep 2012 14:12:47 +0800
+
+libflashplugin (11.2.202.238deepin1) precise; urgency=low
+
+  * add libkutils4 depengs. 
+
+ -- Li Longyu (Ai Kotoba) <leaeasy@gmail.com>  Fri, 31 Aug 2012 11:02:51 +0800
+
+libflashplugin (11.2.202.238) precise; urgency=low
+
+  * Upstream update
+  * Add new kcm-flashplayer package
+
+ -- Li Longyu (Ai Kotoba) <leaeasy@gmail.com>  Fri, 31 Aug 2012 10:43:54 +0800
+
+libflashplugin (11.2.202.221-1) oneiric; urgency=low
+
+  * Upstream update
+
+ -- Li Longyu <leaeasy@gmail.com>  Wed, 29 Feb 2012 09:29:00 +0800
+
+libflashplugin (11.1.102.55-1) oneiric; urgency=low
+
+  * 在Flash Player 11.2中视频解码实现了完全多线程，该功能使得个平台上的Flash
+    性能有了显著提高
+  * 鼠标锁定，鼠标相对坐标，右键和中键单击：利用无限滚动和这些新的鼠标事件创
+    建引人入胜的全景游戏体验，包括第一人称射击游戏
+
+ -- Li Longyu <leaeasy@gmail.com>  Fri, 23 Dec 2011 14:30:31 +0800

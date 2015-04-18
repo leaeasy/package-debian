@@ -1,0 +1,24 @@
+Source: libflashplugin
+Priority: optional
+Maintainer: Li Longyu <leaeasy@gmail.com>
+Build-Depends: debhelper (>= 8.0.0)
+Standards-Version: 3.9.2
+Section: libs
+Homepage: http://get.adobe.com/cn/flashplayer/
+
+Package: libflashplugin
+Section: libs
+Architecture: any
+Depends: ${misc:Depends}, libgtk2.0-0
+Recommends: libvdpau
+Conflicts: flashplugin-installer
+Description: flashplayer plugin for internet browser
+ flashplayer plugin for internet browser like firefox, konqueror.
+
+Package: kcm-flashplayer
+Section: libs
+Architecture: any
+Depends: ${misc:Depends}, libgtk2.0-0, kde-workspace, libflashplugin, libkutils4
+Conflicts: flashplugin-installer
+Description: kcm flashplayer plugin for internet browser
+ kcm flashplayer plugin for internet browser like firefox, konqueror.

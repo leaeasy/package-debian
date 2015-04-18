@@ -1,0 +1,16 @@
+#!/usr/bin/make -f
+
+FLASHPLAYER = install_flash_player_11_linux.x86_64.tar.gz
+ifneq ($(DEB_HOST_ARCH),amd64)
+	FLASHPLAYER = install_flash_player_11_linux.i386.tar.gz
+endif
+
+
+%:
+	dh $@ 
+override_dh_auto_install:
+	mkdir debian/tmp
+	tar xzvf ./$(FLASHPLAYER) -C ./debian/tmp
+	dh_auto_install
+
+override_dh_shlibdeps:

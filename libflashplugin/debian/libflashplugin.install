@@ -1,0 +1,6 @@
+usr/bin/flash-player-properties
+usr/share/applications/flash-player-properties.desktop
+usr/share/icons
+usr/share/pixmaps
+
+libflashplayer.so /usr/lib/mozilla/plugins/
