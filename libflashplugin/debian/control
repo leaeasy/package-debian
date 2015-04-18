@@ -3,7 +3,7 @@ Priority: optional
 Maintainer: Li Longyu <leaeasy@gmail.com>
 Build-Depends: debhelper (>= 8.0.0)
 Standards-Version: 3.9.2
-Section: libs
+Section: non-free/libs
 Homepage: http://get.adobe.com/cn/flashplayer/
 
 Package: libflashplugin
